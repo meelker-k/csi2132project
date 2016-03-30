@@ -51,6 +51,11 @@
 				$stmt = pg_prepare($dbconn, "ps", $query);
 				$result = pg_execute($dbconn, "ps", array($id, $password));
 				
+				if (!$result)
+				{
+					die ("Log in failed.");
+				}
+				
 				$row_count = pg_num_rows($result);
 				if ($row_count > 0)
 				{

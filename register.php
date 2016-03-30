@@ -29,7 +29,8 @@
 			<p>	
 				<label for='password'>Password:</label>
 				<input name='ipassword' type='password' id='ipassword'/>
-			</p><p>	
+			</p>
+			<p>	
 				<label for='retypepassword'>Re-enter Password:</label>
 				<input name='iretypepassword' type='password' id='iretypepassword'/>
 			</p>
@@ -91,6 +92,10 @@
 				if ($result)
 				{
 					echo "<p>User registered successfully!</p>";
+				}
+				else
+				{
+					die ("Registration failed! ".pg_last_error());
 				}
 				pg_close($dbconn);
 			}

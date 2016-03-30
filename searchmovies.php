@@ -7,8 +7,7 @@
     </head>
 	<body>
 		<div id='headernav'>
-			<a class='navlink' href='managemovies.php'>Manage</a>
-			<a class='navlink' href='searchmovies.php'>Search Movies</a>
+			<a class='navlink' href='main.php'>Main</a>
 			<?php
 				session_start();
 				if(array_key_exists('username', $_SESSION))
@@ -18,21 +17,25 @@
 				else
 				{
 					echo " <a class='navlink' href='login.php'>Log in</a> ";
-					echo " <a class='navlink' href='register.php'>Register</a> ";
 				}
 			?>
 		</div>
+		<h3>Search</h3>
+		<form id='searchmovieform' name='searchmovieform' method='post' action=''>
+			<p>
+				<label for='movie'>Movie name:</label>
+				<input name='movie' type='text' id='movie'/>
+				<input type='submit' name='search' value='Search'/>
+			</p>
+		</form>
 		<?php
-			//session_start();
-			if(array_key_exists('username', $_SESSION))
+			if (isset($_POST['movie']))
 			{
-				$user = $_SESSION['username'];
-				echo "<h3> Welcome ".$user."!</h3>";
+				echo "<p>
+					<a href='managemovies.php?movie=".$_POST['movie']."'>".$_POST['movie']."</a>
+					</p>";
 			}
-			else
-			{
-				echo "<h3> Welcome Guest!</h3>";
-			}
+			
 		?>
 	</body>
 </html>
