@@ -1,4 +1,4 @@
-﻿set search_path = "project";
+﻿set search_path = "CSI2132 Project";
 
 insert into Director(director_id, first_name, last_name, country) values(100,'Frank','Darabont','France');
 insert into Director(director_id, first_name, last_name, country) values(101,'Francis','Coppola','USA');

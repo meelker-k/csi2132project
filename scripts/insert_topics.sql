@@ -1,4 +1,4 @@
-﻿set search_path = "project";
+﻿set search_path = "CSI2132 Project";
 
 insert into topics(topic_id, description) values(100,'Surreal');
 insert into topics(topic_id, description) values(101,'Action');

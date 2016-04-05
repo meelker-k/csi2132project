@@ -1,4 +1,4 @@
-﻿set search_path = "project";
+﻿set search_path = "CSI2132 Project";
 
 insert into movie(movie_id, name, date_released) values (100,'The Shawshank Redemption', '1994-10-14');
 insert into movie(movie_id, name, date_released) values (101,'The Godfather', '1972-03-24');
