@@ -1,0 +1,22 @@
+﻿set search_path = "CSI2132 Project";
+
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('hank','aGFua3Bhc3N3b3Jk','Knah','Hank','hank.knah@email.com','Ottawa','Ontario', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('john','am9obnBhc3N3b3Jk','Nhoj','John','john.nhoj@email.com','Toronto','Ontario', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('sam','c2FtcGFzc3dvcmQ=','Mas','Sam','sam.mas@email.com','Gatineau','Quebec', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('frank','ZnJhbmtwYXNzd29yZA==','Knarf','Frank','frank.knarf@email.com','Edmonton','Alberta', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('will','d2lsbHBhc3N3b3Jk','Lliw','Will','will.lliw@email.com','Juneau','Alaska', 'USA');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('amy','YW15cGFzc3dvcmQ=','Yma','Amy','amy.yma@email.com','Columbus','Ohio', 'USA');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('jen','amVucGFzc3dvcmQ=','Nej','Jen','jen.nej@email.com','Los Angeles','California', 'USA');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('bob','Ym9icGFzc3dvcmQ=','Bob','Bobby','bobby.bob@email.com','Ottawa','Ontario', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('grass_stain','Z3Jhc3Nfc3RhaW5lZHBhc3N3b3Jk','Sirhc','Chris','chris.sirhc@email.com','Calgary','Alberta', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('nose_bleed','bm9zZV9ibGVlZHBhc3N3b3Jk','Mik','Kim','kim.mik@email.com','Vancouver','British Columbia', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('short_sighted','c2hvcnRfc2lnaHRlZHBhc3N3b3Jk','Elyk','Kyle','@email.com','Ottawa','Ontario', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('balding','YmFsZGluZ3Bhc3N3b3Jk','Aeslehc','Chelsea','chelsea.aeslehc@email.com','Los Angeles','California', 'USA');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('too_sunny','dG9vX3N1bm55cGFzc3dvcmQ=','Nagem','Megan','megan.nagem@email.com','Cleveland','Ohio', 'USA');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('too_dark','dG9vX2RhcmtwYXNzd29yZA==','Kcire','Erick','erick.kcire@email.com','Juneau','Alaska', 'USA');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('summer','c3VtbWVycGFzc3dvcmQ=','Drahcir','Richard','richard.Drahcir@email.com','Albany','New York', 'USA');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('wwinter','d3dpbnRlcnBhc3N3b3Jk','Trauts','Stuart','stuart.trauts@email.com','Montreal','Quebec', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('fall','ZmFsbHBhc3N3b3Jk','Eitak','Katie','katie.eitak@email.com','Fredricton','New Brunswick', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('spring','c3ByaW5ncGFzc3dvcmQ=','Htiek','Keith','keith.htiek@email.com','Halifax','Nova Scotia', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('shiny','c2hpbnlwYXNzd29yZA==','Divad','David','david.divad@email.com','New York','New York', 'USA');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('matte','bWF0dGVwYXNzd29yZA==','Eikcaj','Jackie','jackie.eikcaj@email.com','Anchorage','Alaska', 'USA');

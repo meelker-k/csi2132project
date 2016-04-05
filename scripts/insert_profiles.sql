@@ -1,0 +1,22 @@
+﻿set search_path = "CSI2132 Project";
+
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('hank','15-19',1998,'M','Student','Computer');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('john','10-14',2003,'M','Student','Theatre');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('sam','30-34',1985,'F','Chef','Television');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('frank','35-39',1977,'M','Data Analyst','Television');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('will','15-19',2000,'M','Student','Television');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('amy','15-19',1999,'F','Student','Computer');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('jen','25-29',1990,'F','Data Miner','Computer');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('bob','25-29',1988,'M','Civil Engineer','iPad');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('grass_stain','35-39',1978,'F','Chemmical Engineer','Theatre');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('nose_bleed','25-29',1988,'M','Drafting Technician','Television');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('short_sighted','10-14',2005,'M','Student','Television');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('balding','15-19',2001,'M','Student','Theatre');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('too_sunny','50-54',1964,'F','Lab Technician','Theatre');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('too_dark','45-49',1968,'F','Ecologist','Television');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('summer','40-44',1974,'F','Economist','Television');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('wwinter','30-34',1986,'F','Microbiologist','Computer');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('fall','20-24',1994,'M','Solar Consultant','iPad');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('spring','25-29',1991,'M','Export Specialist','Computer');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('shiny','25-29',1988,'F','Incident Analyst','Television');
+insert into Profile(user_id,age_range,year_born,gender,occupation,device_used) values('matte','35-39',1979,'F','International Business Specialist','Televsion');

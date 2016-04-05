@@ -3,7 +3,7 @@
 create table Account
 (
 user_id varchar(20) primary key,
-password varchar(20),
+password varchar(50),
 last_name varchar(20),
 first_name varchar(20),
 email varchar(40),
@@ -18,7 +18,7 @@ user_id varchar(20) primary key,
 age_range varchar(20),
 year_born int,
 gender char(1),
-occupation varchar(20),
+occupation varchar(50),
 device_used varchar(20),
 foreign key(user_id) references Account,
 constraint profile_gender check (gender in('M','F'))
@@ -118,7 +118,7 @@ foreign key (movie_id) references Movie
 create table Studio
 (
 studio_id char(3) primary key,
-name varchar(20),
+name varchar(50),
 country varchar(20)
 );
 
