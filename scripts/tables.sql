@@ -83,9 +83,10 @@ date_of_birth date
 
 create table Role
 (
-role_id char(3) primary key,
+role_id char(3),
 name varchar(40),
 actor_id char(3),
+primary key(role_id, actor_id),
 foreign key (actor_id) references Actor
 );
 
