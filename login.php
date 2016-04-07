@@ -40,13 +40,12 @@
 			if (array_key_exists('iusername', $_POST) && array_key_exists('ipassword', $_POST))
 			{
 				$id = $_POST['iusername'];
-				$password = base64_encode($_POST['ipassword']);
+				$valtoconvert = $_POST['iusername'].$_POST['ipassword'];
+				$password = base64_encode($valtoconvert);
 				
-				$conn_string = "host=web0.site.uottawa.ca port=15432 dbname=".$_SESSION['dbusername']." user=".$_SESSION['dbusername']." password=".$_SESSION['dbpassword'];
+				$dbconn = pg_connect($_SESSION['connstring']) or die('Connection Failed');
 				
-				$dbconn = pg_connect($conn_string) or die('Connection Failed');
-				
-				$query = "SELECT * FROM project.Account WHERE user_id = $1 AND password = $2";
+				$query = "SELECT * FROM \"CSI2132 Project\".Account WHERE user_id = $1 AND password = $2";
 				
 				$stmt = pg_prepare($dbconn, "ps", $query);
 				$result = pg_execute($dbconn, "ps", array($id, $password));
@@ -63,7 +62,6 @@
 					header("location: main.php");
 					exit;
 				}
-				echo "Data entered successfully". "<a href='main.php'>login now</a>";
 				
 				pg_free_result($result);
 				pg_close($dbconn);

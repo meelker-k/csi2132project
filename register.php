@@ -20,6 +20,7 @@
 				}
 			?>
 		</div>
+		
 		<h3>Register  a new user</h3>
 		<form id='newuserform' name='newuserform' method='post' action=''>
 			<p>	
@@ -63,7 +64,6 @@
 			</p>
 		</form>
 		<?php
-			//session_start();
 			if (array_key_exists('iuser', $_POST) && array_key_exists('ipassword', $_POST) && array_key_exists('iretypepassword', $_POST))
 			{
 				if ($_POST['ipassword'] != $_POST['iretypepassword'])
@@ -72,7 +72,8 @@
 					exit;
 				}
 				$user = $_POST['iuser'];
-				$password = base64_encode($_POST['ipassword']);
+				$valtoconvert = $_POST['iuser'].$_POST['ipassword'];
+				$password = base64_encode($valtoconvert);
 				$email = $_POST['iemail'];
 				$fname = $_POST['ifname'];
 				$lname = $_POST['ilname'];
@@ -80,25 +81,25 @@
 				$province = $_POST['iprovince'];
 				$country = $_POST['icountry'];
 				
-				$conn_string = "host=web0.site.uottawa.ca port=15432 dbname=".$_SESSION['dbusername']." user=".$_SESSION['dbusername']." password=".$_SESSION['dbpassword'];
+				$dbconn = pg_connect($_SESSION['connstring']) or die('Connection Failed');
 				
-				$dbconn = pg_connect($conn_string) or die('Connection Failed');
-				
-				$query = "INSERT INTO project.Account(user_id, password, last_name, first_name, email, city, province, country) VALUES($1, $2, $3, $4, $5, $6, $7, $8)";
+				$query = "INSERT INTO \"CSI2132 Project\".Account(user_id, password, last_name, first_name, email, city, province, country) VALUES($1, $2, $3, $4, $5, $6, $7, $8)";
 				
 				$stmt = pg_prepare($dbconn, "ps", $query);
 				$result = pg_execute($dbconn, "ps", array($user, $password, $lname, $fname, $email, $city, $province, $country));
 				
 				if ($result)
 				{
-					echo "<p>User registered successfully!</p>";
+					echo "<p>User registered successfully! <a href='login.php'>Log in now!</a></p>";
 				}
 				else
 				{
 					die ("Registration failed! ".pg_last_error());
 				}
+				pg_free_result($result);
 				pg_close($dbconn);
 			}
 		?>
+		
 	</body>
 </html>
