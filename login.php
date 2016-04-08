@@ -20,8 +20,10 @@
 				}
 			?>
 		</div>
-		<h3> Login </h3>
-		<br><br>		
+		<div id='body_title'>
+		<h2> Login </h2>
+		</div>
+		<br>
 		<form id='loginform' name='loginform' method='post' action=''>
 			<p>	
 				<label for='name'>Username:</label>
@@ -59,7 +61,7 @@
 				if ($row_count > 0)
 				{
 					$_SESSION['username'] = $id;
-					header("location: main.php");
+					header("location: main.php");					
 					exit;
 				}
 				

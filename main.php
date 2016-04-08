@@ -9,15 +9,30 @@
 			document.getElementById('newcomment').style.visibility="visible";
 		}		
 		</script>
+		<script>
+		function showComments(){
+			var location = window.location.href,
+				m_sub = "?mid=";
+			
+			if (location.indexOf(m_sub) > -1){
+				document.getElementById('comment_section').style.display="block";
+			}
+			else{
+				document.getElementById('comment_section').style.display="none";
+			}
+			
+		}
+		</script>
     </head>
-	<body>
+	<body onload='showComments()'>
 		<div id='headernav'>
-			<a class='navlink' href='managemovies.php'>Manage</a>
+			<a class='navlink' href='main.php'>Main</a>
 			<a class='navlink' href='searchmovies.php'>Search Movies</a>
 			<?php
 				session_start();
 				if(array_key_exists('username', $_SESSION))
 				{
+					echo " <a class='navlink' href='profile.php'>Profile</a>";
 					echo " <a class='navlink' href='logout.php'>Log out</a> ";
 				} 
 				else
@@ -97,10 +112,10 @@
 				pg_close($dbconn);
 			}
 		?>
-		<button type='button' style='float:right' onclick=show()>Reply</button>
+		<button type='button' style='float:right' onclick='show()'>Reply</button>
 		<form id='newcomment' name='newcomment' method='post' action='' style='visibility:hidden'>
-			<input type='text' name='comment_txt' id='comment_txt' style='float:left; width:60%;'>
-			<input type='submit' name='submit' id='submit' value='Submit' style='float:left'>
+			<textarea type='text' name='comment_txt' id='comment_txt' rows='5' style='float:left; width:60%;'></textarea>
+			<p><input type='submit' name='submit' id='submit' value='Submit' style='float:left'></p>
 		</form>
 		<?php
 				if (array_key_exists('comment_txt', $_POST) && array_key_exists('username', $_SESSION)){

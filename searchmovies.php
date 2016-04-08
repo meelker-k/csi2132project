@@ -3,7 +3,7 @@
     <head>
 		<link rel='stylesheet' type='text/css' href='style.css'>
         <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-        <title>Main Project Page</title>
+        <title>Search</title>
     </head>
 	<body>
 		<div id='headernav'>
@@ -20,7 +20,9 @@
 				}
 			?>
 		</div>
-		<h3>Search</h3>
+		<div id='body_title'>
+		<h2> Search </h2>
+		</div>
 		<form id='searchmovieform' name='searchmovieform' method='post' action=''>
 			<p>
 				<label for='movie'>Movie name:</label>

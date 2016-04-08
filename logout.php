@@ -21,7 +21,9 @@
 				}
 			?>
 		</div>
-		<h3> Goodbye </h3><br/>
+		<div id='body_title'>
+		<h2> Goodbye </h2>
+		</div>
 		<?php
 			//session_start(); 
 			if (array_key_exists('username', $_SESSION))

@@ -19,9 +19,11 @@
 					echo " <a class='navlink' href='login.php'>Log in</a> ";
 				}
 			?>
+		</div>		
+		<div id='body_title'>
+		<h2> Register a new user </h2>
 		</div>
-		
-		<h3>Register  a new user</h3>
+		<br>
 		<form id='newuserform' name='newuserform' method='post' action=''>
 			<p>	
 				<label for='name'>Username:</label>
@@ -90,7 +92,8 @@
 				
 				if ($result)
 				{
-					echo "<p>User registered successfully! <a href='login.php'>Log in now!</a></p>";
+					$_SESSION['username']=$user;
+					echo "Continue to <a href='main.php'>Main</a> or <a href='profile.php'>set up profile.</a>";
 				}
 				else
 				{
