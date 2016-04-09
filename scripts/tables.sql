@@ -34,7 +34,9 @@ create table Movie
 (
 movie_id char(3) primary key,
 name varchar(50),
-date_released date
+date_released date,
+language varchar(20),
+country varchar(20)
 );
 
 create table Watches
@@ -53,13 +55,9 @@ create table MovieTopics
 (
 topic_id char(3),
 movie_id char(3),
-language varchar(20),
-subtitles char(1),
-country varchar(20),
 primary key(topic_id, movie_id),
 foreign key(topic_id) references topics,
-foreign key(movie_id) references movie,
-constraint movietopics_subtitles check(subtitles in('Y','N'))
+foreign key(movie_id) references movie
 );
 
 create table Comments
