@@ -24,6 +24,7 @@
 		<h2> Login </h2>
 		</div>
 		<br>
+		<div id='info_section'>
 		<form id='loginform' name='loginform' method='post' action=''>
 			<p>	
 				<label for='name'>Username:</label>
@@ -69,6 +70,6 @@
 				pg_close($dbconn);
 			}
 		?>
-		
+		</div>
 	</body>
 </html>

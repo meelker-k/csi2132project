@@ -8,28 +8,20 @@
 	<body>
 		<div id='headernav'>
 			<a class='navlink' href='main.php'>Main</a>
-			<?php
-				session_start();
-				if(array_key_exists('username', $_SESSION))
-				{
-					echo " <a class='navlink' href='logout.php'>Log out</a> ";
-				} 
-				else
-				{
-					echo " <a class='navlink' href='login.php'>Log in</a> ";
-					echo " <a class='navlink' href='register.php'>Register</a> ";
-				}
-			?>
+			<a class='navlink' href='login.php'>Login</a>
 		</div>
 		<div id='body_title'>
 		<h2> Goodbye </h2>
 		</div>
+		<div id='info_section'>
 		<?php
-			//session_start(); 
+			session_start(); 
 			if (array_key_exists('username', $_SESSION))
 			{
 				unset($_SESSION['username']);
+				header("Refresh:3; url=main.php");
 			}
 		?>
+		</div>
 	</body>
 </html>

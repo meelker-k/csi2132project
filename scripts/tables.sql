@@ -21,7 +21,7 @@ gender char(1),
 occupation varchar(50),
 device_used varchar(20),
 foreign key(user_id) references Account,
-constraint profile_gender check (gender in('M','F'))
+constraint profile_gender check (gender in('M','F','O'))
 );
 
 create table Topics

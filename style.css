@@ -1,6 +1,6 @@
 #headernav{
 	text-align:right;
-	background: -webkit-linear-gradient(top left, #000000, #FFFFFF);
+	/*background: -webkit-linear-gradient(top left, black, white);*/
 }
 a.navlink:link, a.navlink:visited{
     color: black;
@@ -16,14 +16,43 @@ a.navlink:hover, a.navlink:active{
 }
 #body_title{
 	text-align:center;
+	color:white
 }
 #info_section{
-	
+	display:inline-block;
+	color: white;
 }
 #comment_section{
 	background: #D8D8D8;
 	padding: 6px;
 }
+#errormessage{
+	color:white;
+}
+form{
+	position:relative;
+	padding:10px;
+	display:inline-block;
+	border:1px solid white;
+	box-shadow:0px 0px 8px rgba(0,255,0,1);	
+}
 p.user_comment{
 	background: #CEE3F6;
+}
+html{
+	background: -webkit-linear-gradient(top left, #000000, #FFFFFF);
+}
+input.deletebutton {
+	font-size:20px;
+	background:white;
+	border: 2px solid red;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+input.deletebutton:hover {
+    background-color: red;
+    color: white;
+}
+button.deletebutton:active{
+	border:2px solid white;
 }

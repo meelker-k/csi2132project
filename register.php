@@ -24,6 +24,7 @@
 		<h2> Register a new user </h2>
 		</div>
 		<br>
+		<div id='info_section'>
 		<form id='newuserform' name='newuserform' method='post' action=''>
 			<p>	
 				<label for='name'>Username:</label>
@@ -103,6 +104,6 @@
 				pg_close($dbconn);
 			}
 		?>
-		
+		</div>
 	</body>
 </html>

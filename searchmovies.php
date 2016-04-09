@@ -23,6 +23,7 @@
 		<div id='body_title'>
 		<h2> Search </h2>
 		</div>
+		<div id='info_section'>
 		<form id='searchmovieform' name='searchmovieform' method='post' action=''>
 			<p>
 				<label for='movie'>Movie name:</label>
@@ -60,5 +61,6 @@
 				//echo "<p><a href='managemovies.php?mid=".$_POST['movieid']."'>".$_POST['movieid']."</a></p>";
 			}
 		?>
+		</div>
 	</body>
 </html>
