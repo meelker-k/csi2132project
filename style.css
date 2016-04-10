@@ -1,6 +1,10 @@
+html{
+	/*background: -webkit-linear-gradient(top left, #000000, #FFFFFF);
+	color:white;*/
+}
 #headernav{
 	text-align:right;
-	/*background: -webkit-linear-gradient(top left, black, white);*/
+	border-bottom:1px solid black;
 }
 a.navlink:link, a.navlink:visited{
     color: black;
@@ -14,33 +18,39 @@ a.navlink:hover, a.navlink:active{
 	background-color:gray;
 	color:white;
 }
+a.movielink:link, a.movielink:visited{
+	float:center;
+	color: black;
+    padding: 10px 15px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+}
+a.movielink:hover, a.movielink:active{
+	background-color:#A9BCF5;
+	color:black;
+}
 #body_title{
 	text-align:center;
-	color:white
 }
 #info_section{
-	display:inline-block;
-	color: white;
+	display:block;
 }
 #comment_section{
-	background: #D8D8D8;
-	padding: 6px;
-}
-#errormessage{
-	color:white;
+	color:black;
+	display:block;
+	border-top:1px solid black;
 }
 form{
 	position:relative;
 	padding:10px;
-	display:inline-block;
+	display:block;
 	border:1px solid white;
-	box-shadow:0px 0px 8px rgba(0,255,0,1);	
+	box-shadow:0px 0px 8px rgba(0,0,0,1);
 }
 p.user_comment{
-	background: #CEE3F6;
-}
-html{
-	background: -webkit-linear-gradient(top left, #000000, #FFFFFF);
+	background: #E6E6E6;
+	padding:15px;
 }
 input.deletebutton {
 	font-size:20px;
@@ -53,6 +63,43 @@ input.deletebutton:hover {
     background-color: red;
     color: white;
 }
-button.deletebutton:active{
+input.deletebutton:active{
 	border:2px solid white;
+}
+input.regbutton,  #comment_section button{
+	font-size:16px;
+	background:white;
+	border: 1px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+	display:inline-block;
+	margin:15px;
+}
+input.regbutton:hover, #comment_section button:hover{
+    background-color: #2E64FE;
+    color: white;
+}
+input[type=checkbox],input[type=select]{
+	margin:5px;
+}
+#comment_section form{
+	position:relative;
+	display:block;
+	border:none;
+	box-shadow:none;
+}
+#specific_info li{
+	display:inline;
+	padding:10px;
+	margin: 2px;
+}
+#specific_info a{
+	display:inline;
+	padding: 10px;
+	margin: 2px;
+}
+#specific_info ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

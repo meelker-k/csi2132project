@@ -8,6 +8,9 @@
 	<body>
 		<div id='headernav'>
 		 <a class='navlink' href='main.php'>Main</a>
+		 <a class='navlink' href='search.php'>Search</a>
+		 <a class='navlink' href='movie.php'>Movies</a>
+		 <a class='navlink' href='actor.php'>Actors</a>
 			<?php
 				session_start();
 				if(array_key_exists('username', $_SESSION))
@@ -35,7 +38,7 @@
 				<input name='ipassword' type='password' id='ipassword'/>
 			</p>
 			<p>
-				<input type='submit' name='submit' value='Submit'/>
+				<input type='submit' name='submit' value='Submit' class='regbutton'/>
 			</p>
 		</form>
 		<?php

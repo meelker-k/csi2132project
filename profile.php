@@ -8,7 +8,9 @@
 	<body>
 		<div id='headernav'>
 			<a class='navlink' href='main.php'>Main</a>
-			<a class='navlink' href='searchmovies.php'>Search Movies</a>
+			<a class='navlink' href='search.php'>Search</a>
+			<a class='navlink' href='movie.php'>Movies</a>
+			<a class='navlink' href='actor.php'>Actors</a>
 			<a class='navlink' href='logout.php'>Log out</a>
 		</div>
 		
@@ -73,7 +75,7 @@
 				echo "<label for='occupation'>Occupation</label>
 				<input type='text' name='ioccupation' id='ioccupation'/> <br>";
 			
-				echo "<input type='submit' name='submit' value='Submit'/><br>";
+				echo "<input type='submit' name='submit' value='Submit' class='regbutton'/><br>";
 				echo "</form>";
 			}else{
 				$row = pg_fetch_array($result);
@@ -121,7 +123,7 @@
 			<label for='occupation'>Occupation</label>
 			<input type='text' name='ioccupation' id='ioccupation' value='".$row['occupation']."'/> <br>
 			
-			<input type='submit' name='submit' value='Submit'/><br>		
+			<input type='submit' name='submit' value='Submit' class='regbutton'/><br>		
 		</form>";
 			}
 			
@@ -194,9 +196,9 @@
 					die("<div id='errormessage'>Delete Failed! ".pg_last_error()."</div>");
 				}
 				
-				echo "Delete success! Returning to main.";
+				echo "<p>Delete success! Returning to main.</p>";
 				unset($_SESSION['username']);
-				header("Refresh:3, url:main.php");
+				header("Refresh: 2; url=main.php");
 			}
 		?>
 	</body>
