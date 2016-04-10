@@ -9,7 +9,8 @@ first_name varchar(20),
 email varchar(40),
 city varchar(20),
 province varchar(20),
-country varchar(20)
+country varchar(20),
+join_date date
 );
 
 create table Profile
