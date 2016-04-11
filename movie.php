@@ -161,7 +161,7 @@
 			?>
 			<div id='specific_info'>
 				<h4>Details</h4>
-				<p>Rating: <?php printf("%s",round($rate_row['rating'], 1)); ?></p>
+				<p>Rating: <?php printf("%s",round($rate_row['rating'], 1)); ?><?php if (array_key_exists('username',$_SESSION)){echo "<a href='rate.php?mid=".$_GET['mid']."'>Rate</a>";}?></p>
 				<p>Release Date: <?php printf("%s",$rel_row['date_released']); ?></p>
 				<p>Director: <ul><?php while ($dir_row = pg_fetch_array($directors, null, PGSQL_ASSOC)){ printf("<li>%s %s</li>",$dir_row["first_name"],$dir_row["last_name"]); }
 									   pg_free_result($directors);
