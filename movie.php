@@ -161,7 +161,6 @@
 			?>
 			<div id='specific_info'>
 				<h4>Details</h4>
-<<<<<<< HEAD
 				<p>Rating: <?php printf("%s",round($rate_row['rating'], 1)); ?></p>
 				<p>Release Date: <?php printf("%s",$rel_row['date_released']); ?></p>
 				<p>Director: <ul><?php while ($dir_row = pg_fetch_array($directors, null, PGSQL_ASSOC)){ printf("<li>%s %s</li>",$dir_row["first_name"],$dir_row["last_name"]); }
@@ -172,13 +171,6 @@
 				<p>Tags:<ul><?php while ($tag_row = pg_fetch_array($tags, null, PGSQL_ASSOC)) { printf("<li>%s</li>",$tag_row['description']); }
 								  pg_free_result($tags);
 								  printf("<li><a href='tags.php?mid=%s'>Add/Remove Tags</a></li>",$_GET['mid'])?></ul></p>
-=======
-				<p>Rating: <?php if (array_key_exists('username',$_SESSION)){echo "<a href='rate.php?mid=".$_GET['mid']."'>Rate</a>";}?></p>
-				<p>Release Date: </p>
-				<p>Director: <?php if(array_key_exists('mid', $_GET)){printf("<a href='director.php?mid=%s'>Add/Remove Directors</a>",$_GET['mid']);}?></p>
-				<p>Studio:</p>
-				<p>Tags:<ul><li>tag1</li><li>tag2</li><li>tag3</li><li><?php if(array_key_exists('mid', $_GET)){printf("<a href='tags.php?mid=%s'>Add/Remove Tags</a>",$_GET['mid']);}?></li></ul></p>
->>>>>>> origin/master
 				<h4>Cast</h4>
 					<ul><?php while ($cast_row = pg_fetch_array($cast, null, PGSQL_ASSOC)){ printf("<p><li>%s %s</li></p>",$cast_row['first_name'],$cast_row['last_name']); }
 							  pg_free_result($cast); ?></ul>
