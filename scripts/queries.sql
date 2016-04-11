@@ -34,10 +34,7 @@ having count(r.*) = (select max(num_roles)
 			   group by r2.actor_id) as temp);
 
 --E
---Needs work
-select mr.movie_id, r.actor_id,a.first_name, a.last_name, m.name from Role r, MovieRoles mr, Actor a, Movie m
-where r.role_id = mr.role_id and r.actor_id = a.actor_id and mr.role_id = m.movie_id
-order by a.actor_id;
+--I have no idea how to write this one
 
 --F
 select m.name, avg(w.rating) as rating
