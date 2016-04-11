@@ -1,7 +1,7 @@
 ﻿set search_path = "CSI2132 Project";
 
 insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('hank','aGFua3Bhc3N3b3Jk','Knah','Hank','hank.knah@email.com','Ottawa','Ontario', 'Canada');
-insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('john','am9obnBhc3N3b3Jk','Nhoj','John','john.nhoj@email.com','Toronto','Ontario', 'Canada');
+insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('john','am9obnBhc3N3b3Jk','Smith','John','john.nhoj@email.com','Toronto','Ontario', 'Canada');
 insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('sam','c2FtcGFzc3dvcmQ=','Mas','Sam','sam.mas@email.com','Gatineau','Quebec', 'Canada');
 insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('frank','ZnJhbmtwYXNzd29yZA==','Knarf','Frank','frank.knarf@email.com','Edmonton','Alberta', 'Canada');
 insert into Account(user_id, password, last_name, first_name, email, city, province, country) values('will','d2lsbHBhc3N3b3Jk','Lliw','Will','will.lliw@email.com','Juneau','Alaska', 'USA');

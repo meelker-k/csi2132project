@@ -34,15 +34,17 @@ having count(r.*) = (select max(num_roles)
 			   group by r2.actor_id) as temp);
 
 --E
+--Needs work
+select mr.movie_id, r.actor_id,a.first_name, a.last_name, m.name from Role r, MovieRoles mr, Actor a, Movie m
+where r.role_id = mr.role_id and r.actor_id = a.actor_id and mr.role_id = m.movie_id
+order by a.actor_id;
 
-
---NEEDS TESTING
 --F
 select m.name, avg(w.rating) as rating
 from Movie m, Watches w
 where m.movie_id = w.movie_id
 group by m.name
-order by rating desc
+order by rating desc, m.name
 limit 10;
 
 --G
@@ -63,18 +65,20 @@ where m.movie_id = w.movie_id;
 
 --I
 select m.*
-from Movie m, Watches w
-where m.movie_id = w.movie_id and w.date >= '2016-02-01';
+from Movie m
+left join Watches w on w.movie_id = m.movie_id
+where w.date >= to_date('2016-02-01','YYYY-MM-DD') and w is null;
 
 --J
-select m.name, m.date_released, d.name, w.date, avg(w.rating) as rating
+select m.name, m.date_released, d.first_name, d.last_name, w.date, avg(w.rating) as rating
 from Movie m, Director d, Directs dir, Watches w
 where m.movie_id = dir.movie_id and d.director_id = dir.director_id
       and m.movie_id = w.movie_id
-group by m.name, m.date_released, d.name, w.date
+group by m.name, m.date_released, d.first_name, d.last_name, w.date
 having avg(w.rating) < any (select w2.rating
 			    from Watches w2
-			    where w2.user_id = 'matte');
+			    where w2.user_id = 'matte')
+			    order by w.date;
 
 --K
 select m.name, a.last_name, a.first_name, max(w.rating) as highest_rating
@@ -108,9 +112,9 @@ where w.rating >= all (select w2.rating
 --N: doesn't apply to our database; only one rating per user
 
 --O
-select a.user_id, a.last_name, a.first_name, a.email
+select distinct a.user_id, a.last_name, a.first_name, a.email
 from Account a, Watches w
-where w.rating < any (select w2.rating
+where a.user_id = w.user_id and w.rating < any (select w2.rating
 		      from Watches w2, Account a2
 		      where a2.last_name = 'Smith' and a2.first_name = 'John'
 		            and a2.user_id = w2.user_id);
