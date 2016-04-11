@@ -122,11 +122,11 @@
 					$stmt = pg_prepare($dbconn, "studio", $studio);
 					$studio = pg_execute($dbconn, "studio", array($m_id));
 					
-					$tags = "SELECT t.description FROM \"CSI2132 Project\".Topics t,\"CSI2132 Project\".MovieTopics mt WHERE mt.movie_id = $1 AND mt.topic_id = t.topic_id";
+					$tags = "SELECT t.topic_id, t.description FROM \"CSI2132 Project\".Topics t,\"CSI2132 Project\".MovieTopics mt WHERE mt.movie_id = $1 AND mt.topic_id = t.topic_id";
 					$stmt = pg_prepare($dbconn, "tags", $tags);
 					$tags = pg_execute($dbconn, "tags", array($m_id));
 					
-					$cast = "SELECT a.first_name, a.last_name
+					$cast = "SELECT a.actor_id, a.first_name, a.last_name, r.name
 							 FROM \"CSI2132 Project\".Actor a,\"CSI2132 Project\".Role r,\"CSI2132 Project\".MovieRoles mr
 							 WHERE mr.movie_id = $1 AND mr.role_id = r.role_id AND r.actor_id = a.actor_id";
 					$stmt = pg_prepare($dbconn, "cast", $cast);
@@ -168,12 +168,20 @@
 									   printf("<li><a href='director.php?mid=%s'>Add/Remove Directors</a></li>",$_GET['mid'])?></ul></p>
 				<p>Studio: <ul><?php while ($studio_row = pg_fetch_array($studio, null, PGSQL_ASSOC)){ printf("<li>%s</li>",$studio_row['name']); }
 									 pg_free_result($studio);?></ul></p>
-				<p>Tags:<ul><?php while ($tag_row = pg_fetch_array($tags, null, PGSQL_ASSOC)) { printf("<li>%s</li>",$tag_row['description']); }
-								  pg_free_result($tags);
-								  printf("<li><a href='tags.php?mid=%s'>Add/Remove Tags</a></li>",$_GET['mid'])?></ul></p>
+				<p>Tags:<ul><?php
+					while ($tag_row = pg_fetch_array($tags, null, PGSQL_ASSOC)) {
+						printf("<li id='list_topics'><a href='topic.php?tid=%s'>%s</a></li>",$tag_row['topic_id'], $tag_row['description']);
+					}
+					pg_free_result($tags);
+					printf("<li><a href='tags.php?mid=%s'>Add/Remove Tags</a></li>",$_GET['mid']);
+				?></ul></p>
 				<h4>Cast</h4>
-					<ul><?php while ($cast_row = pg_fetch_array($cast, null, PGSQL_ASSOC)){ printf("<p><li>%s %s</li></p>",$cast_row['first_name'],$cast_row['last_name']); }
-							  pg_free_result($cast); ?></ul>
+					<table style="width:50%"><?php
+						while ($cast_row = pg_fetch_array($cast, null, PGSQL_ASSOC)){
+							printf("<tr><td><p><a class='movielink' href=actor.php?aid=%s>%s %s</a></p></td><td>%s</td></tr>",$cast_row['actor_id'],$cast_row['first_name'],$cast_row['last_name'],$cast_row['name']);
+						}
+						pg_free_result($cast);
+					?></table>
 			</div>
 		</div>
 		<br><br>

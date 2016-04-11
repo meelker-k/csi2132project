@@ -90,8 +90,36 @@
 			}
 		?>
 		</div>
-		<div id='specific_info'>
+		<?php
+			if (array_key_exists('aid', $_GET)) {
+				$dbconn = pg_connect($_SESSION['connstring']) or die('Connection Failed');
 			
+				$a_id = $_GET['aid'];
+				
+				$dob = "SELECT date_of_birth FROM \"CSI2132 Project\".Actor WHERE actor_id = $1";
+				$stmt = pg_prepare($dbconn, "dob", $dob);
+				$dob = pg_execute($dbconn, "dob", array($a_id));
+				
+				$movies = "SELECT m.movie_id, m.name, r.name AS role
+						  FROM \"CSI2132 Project\".Movie m, \"CSI2132 Project\".MovieRoles mr, \"CSI2132 Project\".Role r
+						  WHERE r.actor_id = $1 AND mr.role_id = r.role_id AND mr.movie_id = m.movie_id";
+				$stmt = pg_prepare($dbconn, "movies", $movies);
+				$movies = pg_execute($dbconn, "movies", array($a_id));
+				
+				$dob_row = pg_fetch_array($dob, null, PGSQL_ASSOC);
+				
+				pg_close($dbconn);
+			}
+		?>
+		<div id='specific_info'>
+			<h4>Date of Birth: <?php printf("%s", $dob_row['date_of_birth']); ?></h4>
+			<h4>Filmography</h4>
+				<table style="width:50%"><?php
+					while($movie_row = pg_fetch_array($movies, null, PGSQL_ASSOC)){
+						printf("<tr><td><p><a class='movielink' href=movie.php?mid=%s>%s</a></p></td><td>%s</td></tr>", $movie_row['movie_id'], $movie_row['name'], $movie_row['role']);
+					}
+					pg_free_result($movies);
+				?></table>
 		</div>
 	</div>
 </body>
