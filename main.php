@@ -11,6 +11,7 @@
 			<a class='navlink' href='search.php'>Search</a>
 			<a class='navlink' href='movie.php'>Movies</a>
 			<a class='navlink' href='actor.php'>Actors</a>
+			<a class='navlink' href='topic.php'>Topics</a>
 			<?php
 				session_start();
 				if(array_key_exists('username', $_SESSION))
@@ -42,32 +43,65 @@
 		?>
 		</div>
 		<div id='info_section'>
+			<?php 
+				$dbconn = pg_connect($_SESSION['connstring']) or die('Connection Failed');
+				
+				$query = "select m.name, m.movie_id, avg(w.rating) as rating from \"CSI2132 Project\".Movie m, \"CSI2132 Project\".Watches w where m.movie_id = w.movie_id group by m.name, m.movie_id order by rating desc limit 10";
+				
+				$stmt = pg_prepare($dbconn, "ps", $query);
+				$result = pg_execute($dbconn, "ps", array());
+				
+				if(!$result){
+					die(pg_last_error());
+				}
+			?>
 			<div id='top_movies'>
-				<h3> 10 Most Popular Movies </h3>
+				<h3> Top 10 Highest Rated Movies </h3>
 					<ol>
-					<li>Movie 1</li>
-					<li>Movie 2</li>
-					<li>Movie 3</li>
-					<li>Movie 4</li>
-					<li>Movie 5</li>
-					<li>Movie 6</li>
-					<li>Movie 7</li>
-					<li>Movie 8</li>
-					<li>Movie 9</li>
-					<li>Movie 10</li>
+					<?php
+					while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
+						printf("<li><a href='movie.php?mid=%s'>%s</a></li>",$row["movie_id"],$row["name"]);
+					}
+					pg_free_result($result);
+					?>
 					</ol>
-				<h3> 10 Highest Rated Movies </h3>
+				<h3> Top 10 Most Popular Movies </h3>
+				<?php 
+					$query = "select m.name, m.movie_id, count(w.rating) as rating from \"CSI2132 Project\".Movie m, \"CSI2132 Project\".Watches w where m.movie_id = w.movie_id group by m.name, m.movie_id order by rating desc limit 10";
+				
+					$stmt = pg_prepare($dbconn, "qtwo", $query);
+					$result = pg_execute($dbconn, "qtwo", array());
+				
+					if(!$result){
+						die(pg_last_error());
+					}				
+				?>
 				<ol>
-					<li>Movie 1</li>
-					<li>Movie 2</li>
-					<li>Movie 3</li>
-					<li>Movie 4</li>
-					<li>Movie 5</li>
-					<li>Movie 6</li>
-					<li>Movie 7</li>
-					<li>Movie 8</li>
-					<li>Movie 9</li>
-					<li>Movie 10</li>
+					<?php
+					while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
+						printf("<li><a href='movie.php?mid=%s'>%s</a></li>",$row["movie_id"],$row["name"]);
+					}
+					pg_free_result($result);
+					?>
+				</ol>
+				<h3> Top 10 Most Popular Categories </h3>
+				<?php 
+					$query = "select t.description, t.topic_id, count(mt.movie_id) as count from \"CSI2132 Project\".Topics t, \"CSI2132 Project\".MovieTopics mt where t.topic_id = mt.topic_id group by t.description, t.topic_id order by count desc, t.description limit 10";
+				
+					$stmt = pg_prepare($dbconn, "qthree", $query);
+					$result = pg_execute($dbconn, "qthree", array());
+				
+					if(!$result){
+						die(pg_last_error());
+					}				
+				?>
+				<ol>
+					<?php
+					while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)){
+						printf("<li><a href='topic.php?tid=%s'>%s</a></li>",$row["topic_id"],$row["description"]);
+					}
+					pg_free_result($result);
+					?>
 				</ol>
 			</div>			
 		</div>

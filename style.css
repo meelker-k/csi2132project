@@ -53,7 +53,7 @@ p.user_comment{
 	padding:15px;
 }
 input.deletebutton {
-	font-size:20px;
+	font-size:16px;
 	background:white;
 	border: 2px solid red;
     -webkit-transition-duration: 0.4s;
@@ -102,4 +102,54 @@ input[type=checkbox],input[type=select]{
 	list-style-type: none;
     margin: 0;
     padding: 0;
+}
+#back button{
+	font-size:16px;
+	background:white;
+	border: 1px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+	display:block;
+	margin:15px 0px;
+}
+#back button:hover{
+    background-color: #2E64FE;
+    color: white;
+}
+div.rate{
+	color:black;
+	cursor:pointer;
+}
+div.rate:hover{
+	color:red;
+}
+div.rate-item{
+	float:left;
+	cursor:pointer;
+	margin:0px 5px 0px 5px;
+}
+div.rate-item:hover ~ div.rate-item {
+	color: black;
+}
+#list_topics a:link, #list_topics a:visited{
+	color: black;
+    padding: 5px 5px;
+	margin: 2px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+}
+#list_topics a:hover, #list_topics a:active{
+	background-color:gray;
+	color:white;
+}
+#top_movies ol{
+	display:block;
+	padding:10px;
+	margin: 2px;
+}
+#top_movies li{
+	display:block;
+	padding:10px;
+	margin: 2px;
 }

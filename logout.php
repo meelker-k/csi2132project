@@ -11,6 +11,7 @@
 		 <a class='navlink' href='search.php'>Search</a>
 		 <a class='navlink' href='movie.php'>Movies</a>
 		 <a class='navlink' href='actor.php'>Actors</a>
+		<a class='navlink' href='topic.php'>Topics</a>
 			<a class='navlink' href='login.php'>Login</a>
 		</div>
 		<div id='body_title'>
