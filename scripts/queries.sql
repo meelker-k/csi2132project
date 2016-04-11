@@ -34,11 +34,7 @@ having count(r.*) = (select max(num_roles)
 			   group by r2.actor_id) as temp);
 
 --E
-select a.last_name, a.first_name, m.name
-from Actor a inner join Role r on a.actor_id = r.actor_id
-	     inner join MovieRoles mr on r.role_id = mr.role_id
-	     inner join Movie m on mr.movie_id = m.movie_id
-limit 10;
+
 
 --NEEDS TESTING
 --F
@@ -83,11 +79,11 @@ having avg(w.rating) < any (select w2.rating
 --K
 select m.name, a.last_name, a.first_name, max(w.rating) as highest_rating
 from Movie m, Account a, Watches w, MovieTopics mt, Topics t
-where t.description = 'Romance' and t.topic_id = mt.topic_id and mt.movie_id = m.movie_id
+where t.description = 'Drama' and t.topic_id = mt.topic_id and mt.movie_id = m.movie_id
       and m.movie_id = w.movie_id and w.user_id = a.user_id
       and w.rating = (select max(w2.rating) as highest_rating
 		      from Watches w2, MovieTopics mt2, Topics t2
-		      where t2.description = 'Romance' and t2.topic_id = mt2.topic_id
+		      where t2.description = 'Drama' and t2.topic_id = mt2.topic_id
 			    and mt2.movie_id = w2.movie_id)
 group by m.name, a.last_name, a.first_name;
 
@@ -96,7 +92,7 @@ select t.description, count(w.*) as num_viewers
 from Watches w, Topics t, MovieTopics mt
 where t.description = 'Drama' and t.topic_id = mt.topic_id and mt.movie_id = w.movie_id
 group by t.description
-having count(w.*) > all (select count(w2.*)
+having count(w.*) >= all (select count(w2.*)
 			    from Watches w2, Topics t2, MovieTopics mt2
 			    where t2.description <> 'Drama' and t2.topic_id = mt2.topic_id
 				  and mt2.movie_id = w2.movie_id
@@ -120,5 +116,9 @@ where w.rating < any (select w2.rating
 		            and a2.user_id = w2.user_id);
 
 --P
-select a.user_id, a.last_name, a.first_name, a.email, m.name, w.rating
-from Account a, Watches w, Movie m
+select t.description, a.user_id, a.last_name, a.first_name, a.email, m.name, w.rating
+from Account a, Watches w, Movie m, MovieTopics mt, Topics t
+where a.user_id = w.user_id and w.movie_id = m.movie_id
+      and m.movie_id = mt.movie_id and mt.topic_id = t.topic_id
+group by t.description, a.user_id, a.last_name, a.first_name, a.email, m.name, w.rating
+having min(w.rating) = 1 and max(w.rating) = 10;
