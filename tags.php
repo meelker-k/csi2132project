@@ -16,6 +16,7 @@
 		<a class='navlink' href='search.php'>Search</a>
 		<a class='navlink' href='movie.php'>Movies</a>
 		<a class='navlink' href='actor.php'>Actors</a>
+		<a class='navlink' href='topic.php'>Topics</a>
 		<?php
 			session_start();
 			if(array_key_exists('username', $_SESSION))
@@ -83,7 +84,7 @@
 						<option></option>
 						<?php while ($rowtopic = pg_fetch_array($topics, null, PGSQL_ASSOC)){ printf("<option value=%s>%s</option>",$rowtopic["topic_id"],$rowtopic["description"]);}?>
 					</select></p>
-			<input class='regbutton' type='submit' name='deltags' value='Delete Selected'/>
+			<input class='deletebutton' type='submit' name='deltags' value='Delete Selected'/>
 			<input class='regbutton' type='submit' name='addtag' value='Add'/>
 		</form>
 		<?php
@@ -121,8 +122,6 @@
 			}
 		?>
 	</div>
-	<span style='margin:10px; font-size:20px;'>
-	<button onclick='goBack()'>Back</button>
-	</span>
+	<div id='back'>	<button onclick='goBack()'>Back</button></div>
 </body>
 </html>

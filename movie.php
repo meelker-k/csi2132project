@@ -4,47 +4,37 @@
 	<link rel='stylesheet' type='text/css' href='style.css'>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
     <title>Movies</title>
-	<script>
+	<script type="text/javascript">
 		function show(){
 			document.getElementById('newcomment').style.visibility="visible";
 		}		
 	</script>
-	<script>
+	<script type="text/javascript">
 		function showComments(){
 			var location = window.location.href,
 				m_sub = "?mid=";
 			
 			if (location.indexOf(m_sub) > -1){
 				document.getElementById('comment_section').style.display="block";
-			}
-			else{
-				document.getElementById('comment_section').style.display="none";
-			}
-			
-		}
-	</script>
-	<script>
-		function showListAll(){
-			var location = window.location.href,
-				m_sub = "?aid=";
-			
-			if (location.indexOf(m_sub) > -1){
 				document.getElementById('list_all').style.display="none";
 				document.getElementById('specific_info').style.display="block";
 			}
 			else{
+				document.getElementById('comment_section').style.display="none";
 				document.getElementById('list_all').style.display="block";
 				document.getElementById('specific_info').style.display="none";
 			}
+			
 		}
 	</script>
 </head>
-<body onload='showComments()' onload='showListAll()'>
+<body onload='showComments()'>
 		<div id='headernav'>
 			<a class='navlink' href='main.php'>Main</a>
 			<a class='navlink' href='search.php'>Search</a>
 			<a class='navlink' href='movie.php'>Movies</a>
 			<a class='navlink' href='actor.php'>Actors</a>
+			<a class='navlink' href='topic.php'>Topics</a>
 			<?php
 				session_start();
 				if(array_key_exists('username', $_SESSION))
@@ -110,11 +100,11 @@
 			</div>
 			<div id='specific_info'>
 				<h4>Details</h4>
-				<p>Rating:</p>
-				<p>Release Date:</p>
-				<p>Director: <?php printf("<a href='director.php?mid=%s'>Add/Remove Directors</a>",$_GET['mid'])?></p>
+				<p>Rating: <?php if (array_key_exists('username',$_SESSION)){echo "<a href='rate.php?mid=".$_GET['mid']."'>Rate</a>";}?></p>
+				<p>Release Date: </p>
+				<p>Director: <?php if(array_key_exists('mid', $_GET)){printf("<a href='director.php?mid=%s'>Add/Remove Directors</a>",$_GET['mid']);}?></p>
 				<p>Studio:</p>
-				<p>Tags:<ul><li>tag1</li><li>tag2</li><li>tag3</li><li><?php printf("<a href='tags.php?mid=%s'>Add/Remove Tags</a>",$_GET['mid'])?></li></ul></p>
+				<p>Tags:<ul><li>tag1</li><li>tag2</li><li>tag3</li><li><?php if(array_key_exists('mid', $_GET)){printf("<a href='tags.php?mid=%s'>Add/Remove Tags</a>",$_GET['mid']);}?></li></ul></p>
 				<h4>Cast</h4>
 					<ul>
 						<li>Cast1</li>
@@ -153,13 +143,13 @@
 				pg_close($dbconn);
 			}
 		?>
-		<button type='button' style='float:right' onclick='show()'>Reply</button>
+		<?php if (array_key_exists('username',$_SESSION)){echo "<button type='button' style='float:right' onclick='show()'>Reply</button>";}?>
 		<form id='newcomment' name='newcomment' method='post' action='' style='visibility:hidden'>
 			<textarea type='text' name='comment_txt' id='comment_txt' rows='5' style='float:left; width:60%;'></textarea>
 			<p><input type='submit' name='submit' id='submit' value='Submit' style='float:left' class='regbutton'></p>
 		</form>
 		<?php
-				if (array_key_exists('comment_txt', $_POST) && array_key_exists('username', $_SESSION)){
+				if (array_key_exists('comment_txt', $_POST) && array_key_exists('username', $_SESSION) && array_key_exists('mid', $_GET)){
 					$dbconn = pg_connect($_SESSION['connstring']) or die('Connection Failed');
 				
 					$m_id = $_GET['mid'];

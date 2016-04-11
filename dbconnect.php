@@ -26,7 +26,7 @@
 				$password = $_POST['idbpassword'];
 				
 				//$conn_string = "host=web0.site.uottawa.ca port=15432 dbname=".$id." user=".$id." password=".$password; //schools database
-				$conn_string = "host=localhost port=5432 dbname=postgres user=postgres password=kyle1988";//local dabase
+				$conn_string = "host=localhost port=5432 dbname=postgres user=postgres password=kyle1988";//local database
 				
 				$dbconn = pg_connect($conn_string) or die('Connection Failed');
 				echo "Connection Successful!";
